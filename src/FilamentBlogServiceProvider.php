@@ -13,6 +13,7 @@ class FilamentBlogServiceProvider extends PackageServiceProvider
         $package->name('filament-blog')
             ->hasMigrations()
             ->hasViews()
+            ->hasRoute('web')
             ->hasInstallCommand(function (InstallCommand $installCommand) {
                 $installCommand
                     ->publishConfigFile()
