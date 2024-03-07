@@ -2,7 +2,6 @@
 
 namespace Magan\FilamentBlog\Resources;
 
-use App\Enums\PostStatus;
 use Filament\Forms\Form;
 use Filament\Infolists\Components\Fieldset;
 use Filament\Infolists\Components\Section;
@@ -12,6 +11,7 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
+use Magan\FilamentBlog\Enums\PostStatus;
 use Magan\FilamentBlog\Models\Post;
 
 class PostResource extends Resource

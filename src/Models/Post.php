@@ -2,7 +2,6 @@
 
 namespace Magan\FilamentBlog\Models;
 
-use App\Enums\PostStatus;
 use App\Models\User;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\Fieldset;
@@ -19,6 +18,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Str;
+use Magan\FilamentBlog\Enums\PostStatus;
 
 class Post extends Model
 {
