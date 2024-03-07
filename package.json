@@ -1,6 +1,0 @@
-{
-  "scripts": {
-    "tailwind-build": "tailwindcss build resources/css/app.css -o resources/css/tailwind.css"
-  }
-
-}

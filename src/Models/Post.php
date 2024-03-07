@@ -36,6 +36,11 @@ class Post extends Model
         'user_id',
     ];
 
+    protected $dates = [
+        'published_at',
+        'scheduled_for',
+    ];
+
     /**
      * The attributes that should be cast to native types.
      *

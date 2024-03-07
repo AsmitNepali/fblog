@@ -2,6 +2,11 @@
 
 namespace Magan\FilamentBlog;
 
+use Magan\FilamentBlog\Components\HeroChildPost;
+use Magan\FilamentBlog\Components\HeroPost;
+use Magan\FilamentBlog\Components\Layout;
+use Magan\FilamentBlog\Components\RecentPost;
+use Magan\FilamentBlog\Components\RelatedPost;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
@@ -13,7 +18,8 @@ class FilamentBlogServiceProvider extends PackageServiceProvider
         $package->name('filament-blog')
             ->hasConfigFile(['filamentblog'])
             ->hasMigration('create_blog_tables')
-            ->hasViews()
+            ->hasViewComponents('blog', Layout::class, HeroPost::class, HeroChildPost::class, RecentPost::class, RelatedPost::class)
+            ->hasViews('filament-blog')
             ->hasRoute('web')
             ->hasInstallCommand(function (InstallCommand $installCommand) {
                 $installCommand
