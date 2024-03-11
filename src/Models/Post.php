@@ -39,7 +39,6 @@ class Post extends Model
     ];
 
     protected $dates = [
-        'published_at',
         'scheduled_for',
     ];
 
@@ -83,7 +82,7 @@ class Post extends Model
 
     public function scopePublished(Builder $query)
     {
-        return $query->where('status', PostStatus::PUBLISHED);
+        return $query->where('status', PostStatus::PUBLISHED)->latest('published_at');
     }
 
     public function formattedPublishedDate()
@@ -94,6 +93,11 @@ class Post extends Model
     public function isScheduled()
     {
         return $this->status === PostStatus::SCHEDULED;
+    }
+
+    public function isStatusPublished()
+    {
+        return $this->status === PostStatus::PUBLISHED;
     }
 
     public function relatedPosts($take = 3)
@@ -175,13 +179,6 @@ class Post extends Model
                                 ->required(function ($get) {
                                     return $get('status') === PostStatus::SCHEDULED->value;
                                 })
-                                ->native(false),
-
-                            DateTimePicker::make('published_at')
-                                ->visible(function ($get) {
-                                    return $get('status') === PostStatus::PUBLISHED->value;
-                                })
-                                ->hidden()
                                 ->native(false),
                         ]),
                     Select::make('user_id')

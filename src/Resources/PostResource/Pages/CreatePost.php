@@ -20,12 +20,9 @@ class CreatePost extends CreateRecord
             PostScheduleJob::dispatch($this->record)
                 ->delay($now->diffInSeconds($scheduledFor));
         }
-    }
-
-    protected function beforeCreate()
-    {
-        if ($this->data['status'] === 'published') {
-            $this->data['published_at'] = Carbon::now();
+        if ($this->record->isStatusPublished()) {
+            $this->record->published_at = date('Y-m-d H:i:s');
+            $this->record->save();
         }
     }
 

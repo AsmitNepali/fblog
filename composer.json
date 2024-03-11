@@ -1,27 +1,32 @@
 {
-    "name": "magan/filament-blog",
-    "type": "library",
-    "license": "MIT",
-    "autoload": {
-        "psr-4": {
-            "Magan\\FilamentBlog\\": "src/"
-        }
-    },
-    "authors": [
-        {
-            "name": "Asmit Nepali"
-        }
-    ],
-    "minimum-stability": "dev",
-    "require": {
-        "filament/support": "^3.2",
-        "awcodes/filament-tiptap-editor": "3.x-dev"
-    },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "Magan\\FilamentBlog\\FilamentBlogServiceProvider"
-            ]
-        }
+  "name": "magan/filament-blog",
+  "type": "library",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Magan\\FilamentBlog\\": "src/"
     }
+  },
+  "authors": [
+    {
+      "name": "Asmit Nepali"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "filament/support": "^3.2",
+    "awcodes/filament-tiptap-editor": "3.x-dev",
+    "artesaos/seotools": "^0.2.0@beta"
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Magan\\FilamentBlog\\FilamentBlogServiceProvider",
+        "Artesaos\\SEOTools\\Providers\\SEOToolsServiceProvider"
+      ],
+      "aliases": {
+        "SEOMeta" : "Artesaos\\SEOTools\\Facades"
+      }
+    }
+  }
 }

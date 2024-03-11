@@ -1,6 +1,53 @@
 {
     "packages": [
         {
+            "name": "artesaos/seotools",
+            "version": "0.2-beta",
+            "version_normalized": "0.2.0.0-beta",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/artesaos/seotools.git",
+                "reference": "840b10da862b105014a277fe22f15a95c3a286db"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/artesaos/seotools/zipball/840b10da862b105014a277fe22f15a95c3a286db",
+                "reference": "840b10da862b105014a277fe22f15a95c3a286db",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpspec/phpspec": "2.1.x",
+                "phpunit/phpunit": "4.*"
+            },
+            "time": "2015-03-03T03:48:30+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Artesaos\\SEOTools\\": "src/SEOTools/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Vinicius",
+                    "email": "luiz.vinicius73@gmail.com"
+                }
+            ],
+            "description": "SEO Tools for Laravel",
+            "support": {
+                "issues": "https://github.com/artesaos/seotools/issues",
+                "source": "https://github.com/artesaos/seotools/tree/0.2-beta"
+            },
+            "install-path": "../artesaos/seotools"
+        },
+        {
             "name": "awcodes/filament-tiptap-editor",
             "version": "3.x-dev",
             "version_normalized": "3.9999999.9999999.9999999-dev",
