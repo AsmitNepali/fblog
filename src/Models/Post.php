@@ -119,8 +119,10 @@ class Post extends Model
                                 ->columnSpanFull(),
 
                             TextInput::make('title')
-                                ->live()->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug',
-                                    Str::slug($state)))
+                                ->live()->afterStateUpdated(fn (Set $set, ?string $state) => $set(
+                                    'slug',
+                                    Str::slug($state)
+                                ))
                                 ->required()
                                 ->unique('posts', 'title', null, 'id')
                                 ->maxLength(255),

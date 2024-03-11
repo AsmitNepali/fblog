@@ -24,8 +24,8 @@ class CreatePost extends CreateRecord
 
     protected function beforeCreate()
     {
-        if ($this->record->status === 'published') {
-            $this->record->published_at = Carbon::now();
+        if ($this->data['status'] === 'published') {
+            $this->data['published_at'] = Carbon::now();
         }
     }
 

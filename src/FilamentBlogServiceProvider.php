@@ -29,7 +29,7 @@ class FilamentBlogServiceProvider extends PackageServiceProvider
                     ->publishConfigFile()
                     ->publishMigrations()
                     ->endWith(function (InstallCommand $installCommand) {
-                        $installCommand->info('Congratulations! Your package has been installed!');
+                        $installCommand->info("Get ready to breathe easy! Our package has just saved you from a day's worth of headaches and hassle.");
                     });
             });
     }
