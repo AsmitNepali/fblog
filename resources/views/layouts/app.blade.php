@@ -29,13 +29,13 @@
         <div class="container mx-auto">
             <div class="flex justify-between gap-x-4">
                 <div class="flex items-center">
-                    <a href="#">
+                    <a href="/">
                         <span class="text-2xl">{{ config('app.name', 'Magan Blog') }} <strong>Blog</strong></span>
                     </a>
                 </div>
                 <div class="flex items-center">
                     <div class="flex gap-x-4">
-                        <a href="#" class="text-lg font-medium hover:text-blue-600">
+                        <a href="/" class="text-lg font-medium hover:text-blue-600">
                             <span>Home</span>
                         </a>
                         <a href="#" class="text-lg font-medium hover:text-blue-600">

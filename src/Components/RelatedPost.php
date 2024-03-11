@@ -3,7 +3,6 @@
 namespace Magan\FilamentBlog\Components;
 
 use Illuminate\View\Component;
-use Magan\FilamentBlog\Models\Post;
 
 class RelatedPost extends Component
 {
@@ -13,7 +12,9 @@ class RelatedPost extends Component
     public function render()
     {
         $post = (request('post'));
-        $posts = Post::query()->where('slug', '!=', $post)->inRandomOrder()->take(3)->get();
+        $posts = $post::whereHas('categories', function ($query) use ($post) {
+            $query->whereIn('categories.id', $post->categories->pluck('id'));
+        })->with('user')->get();
 
         return view('filament-blog::components.recent-post', [
             'posts' => $posts,

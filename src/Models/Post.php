@@ -96,6 +96,13 @@ class Post extends Model
         return $this->status === PostStatus::SCHEDULED;
     }
 
+    public function relatedPosts($take = 3)
+    {
+        return $this->whereHas('categories', function ($query) {
+            $query->whereIn('categories.id', $this->categories->pluck('id'));
+        })->take($take)->get();
+    }
+
     public static function getForm()
     {
         return [

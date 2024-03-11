@@ -11,6 +11,7 @@ class HeroChildPost extends Component
     {
         $posts = Post::query()
             ->with('categories', 'user')
+            ->published()
             ->offset(1)
             ->latest()
             ->take(2)
