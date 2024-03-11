@@ -1,3 +1,4 @@
+@props(['post'=> $post])
 <div>
     <div class="flex flex-col gap-y-5">
         <div class="rounded-xl overflow-hidden h-[250px] bg-slate-200 w-full">

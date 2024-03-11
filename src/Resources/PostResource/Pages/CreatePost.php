@@ -15,10 +15,11 @@ class CreatePost extends CreateRecord
     protected function afterCreate()
     {
         if ($this->record->isScheduled()) {
+            $now = Carbon::now();
             $scheduledFor = Carbon::parse($this->record->scheduled_for);
-            PostScheduleJob::dispatchSync($this->record)->delay($scheduledFor);
+            PostScheduleJob::dispatch($this->record)
+                ->delay($now->diffInSeconds($scheduledFor));
         }
-
     }
 
     protected function getRedirectUrl(): string

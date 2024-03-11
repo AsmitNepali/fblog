@@ -5,11 +5,14 @@ namespace Magan\FilamentBlog\Http\Controllers;
 use Illuminate\Support\Facades\Request;
 use Magan\FilamentBlog\Models\Post;
 
-class BlogController extends Controller
+class PostController extends Controller
 {
     public function index(Request $request)
     {
-        $posts = Post::query()->with(['categories', 'user'])->published()->paginate(10);
+        $posts = Post::query()->with(['categories', 'user'])
+            ->published()
+            ->latest('published_at')
+            ->paginate(10);
 
         return view('filament-blog::blogs.index', [
             'posts' => $posts,

@@ -29,7 +29,7 @@
         <div class="container mx-auto">
             <div class="flex justify-between gap-x-4">
                 <div class="flex items-center">
-                    <a href="/">
+                    <a href="{{ route('post.index') }}">
                         <span class="text-2xl">{{ config('app.name', 'Magan Blog') }} <strong>Blog</strong></span>
                     </a>
                 </div>

@@ -91,7 +91,7 @@ class Post extends Model
         return $this->published_at?->format('d M Y');
     }
 
-    public function isSchedule()
+    public function isScheduled()
     {
         return $this->status === PostStatus::SCHEDULED;
     }
@@ -99,8 +99,8 @@ class Post extends Model
     public function relatedPosts($take = 3)
     {
         return $this->whereHas('categories', function ($query) {
-            $query->whereIn('categories.id', $this->categories->pluck('id'));
-        })->take($take)->get();
+            $query->whereIn('categories.id', $this->categories->pluck('id'))->whereNotIn('posts.id', [$this->id]);
+        })->with('user')->take($take)->get();
     }
 
     public static function getForm()
