@@ -12,6 +12,7 @@ use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Set;
 use FilamentTiptapEditor\TiptapEditor;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -33,6 +34,7 @@ class Post extends Model
         'published_at',
         'scheduled_for',
         'cover_photo_path',
+        'photo_alt_text',
         'user_id',
     ];
 
@@ -54,7 +56,7 @@ class Post extends Model
         'user_id' => 'integer',
     ];
 
-    public function categories(): BelongsToMany
+    public function categories()
     {
         return $this->belongsToMany(Category::class);
     }
@@ -77,6 +79,21 @@ class Post extends Model
     public function seoDetail()
     {
         return $this->hasOne(SeoDetail::class);
+    }
+
+    public function scopePublished(Builder $query)
+    {
+        return $query->where('status', PostStatus::PUBLISHED);
+    }
+
+    public function formattedPublishedDate()
+    {
+        return $this->published_at?->format('d M Y');
+    }
+
+    public function isSchedule()
+    {
+        return $this->status === PostStatus::SCHEDULED;
     }
 
     public static function getForm()

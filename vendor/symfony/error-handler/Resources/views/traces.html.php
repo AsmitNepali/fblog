@@ -46,11 +46,11 @@ foreach ($exception['trace'] as $i => $trace) {
     } ?>
             <div class="trace-line <?= $isVendorTrace ? 'trace-from-vendor' : ''; ?>">
                 <?= $this->include('views/trace.html.php', [
-            'prefix' => $index,
-            'i' => $i,
-            'trace' => $trace,
-            'style' => $isVendorTrace ? 'compact' : ($displayCodeSnippet ? 'expanded' : ''),
-        ]); ?>
+                    'prefix' => $index,
+                    'i' => $i,
+                    'trace' => $trace,
+                    'style' => $isVendorTrace ? 'compact' : ($displayCodeSnippet ? 'expanded' : ''),
+                ]); ?>
             </div>
             <?php
 } ?>

@@ -3,7 +3,7 @@
         <div class="rounded-xl overflow-hidden min-w-[300px] min-h-[200px] bg-slate-200 w-full">
             <img class="h-full w-full object-cover object-top"
                  src="{{ asset($post->cover_photo_path) }}"
-                 alt="post-featured-image">
+                 alt="{{ $post->photo_alt_text }}">
         </div>
         <div class="py-4 flex flex-col gap-y-2">
             <div>

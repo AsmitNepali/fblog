@@ -16,13 +16,13 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
         body {
-            font-family: "Plus Jakarta Sans";
+            font-family: "Plus Jakarta Sans", serif;
             font-weight: 400;
             font-style: normal;
         }
     </style>
 </head>
-<body class="font-sans antialiased">
+<body class="font-sans antialiased" style="font-family:'Plus Jakarta Sans' ">
 <div class="min-h-screen bg-gray-100">
     <!-- Page Header -->
     <header class="py-5 mb-4 border-b border-slate-200">

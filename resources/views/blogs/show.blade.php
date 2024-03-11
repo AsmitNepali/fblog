@@ -7,7 +7,8 @@
                     <div class="flex flex-col justify-end">
                         <div class="rounded-xl h-full overflow-hidden bg-slate-200 w-full">
                             <img class="h-full object-cover object-top" src="{{ asset($post->cover_photo_path) }}"
-                                 alt="post-featured-image">
+                                 alt="{{ $post->photo_alt_text }}">
+                                {{ $post->categories }}
                         </div>
                         <div class="py-4 flex items-center justify-between gap-x-3 mb-5">
 {{--                            <ul class="flex gap-x-2">--}}
@@ -18,7 +19,7 @@
 {{--                            </ul>--}}
                             <div>
                                     <span class="block text-slate-500 text-sm font-medium">
-                                        {{ $post->user->name }} • {{ $post->published_at?->format('d M Y') }}
+                                        {{ $post->user->name }} • {{ $post->formattedPublishedDate() }}
                                     </span>
                             </div>
                         </div>

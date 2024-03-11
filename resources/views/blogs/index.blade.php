@@ -29,7 +29,7 @@
                         <div class="rounded h-[200px] bg-slate-200 w-full">
                             <img class="h-full w-full object-cover object-top"
                                  src="{{ asset($post->cover_photo_path) }}"
-                                 alt="post-featured-image">
+                                 alt="{{ $post->photo_alt_text }}">
                         </div>
                         <div class="space-y-3">
                             <a href="{{ route('post.show', ['post' => $post->slug]) }}" class="text-xl mb-2 font-semibold hover:text-blue-600">
@@ -38,7 +38,7 @@
                             <p class="mb-3">
                                {{ Str::limit($post->sub_title, 100) }}
                             </p>
-                            <span class="mb-2 block text-slate-500 text-sm font-medium">{{$post->user->name}} • {{$post->published_at?->format('d M Y')}}</span>
+                            <span class="mb-2 block text-slate-500 text-sm font-medium">{{$post->user->name}} • {{$post->formattedPublishedDate()}}</span>
                         </div>
                     </div>
                 </div>
