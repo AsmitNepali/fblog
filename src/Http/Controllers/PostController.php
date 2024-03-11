@@ -21,7 +21,7 @@ class PostController extends Controller
 
     public function show(Post $post)
     {
-        $post->load(['user']);
+        $post->load(['user', 'categories']);
 
         return view('filament-blog::blogs.show', [
             'post' => $post,

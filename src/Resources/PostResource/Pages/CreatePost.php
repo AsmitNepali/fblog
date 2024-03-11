@@ -22,6 +22,13 @@ class CreatePost extends CreateRecord
         }
     }
 
+    protected function beforeCreate()
+    {
+        if ($this->record->status === 'published') {
+            $this->record->published_at = Carbon::now();
+        }
+    }
+
     protected function getRedirectUrl(): string
     {
         return SeoDetailResource::getUrl('create', ['post_id' => $this->record->id]);

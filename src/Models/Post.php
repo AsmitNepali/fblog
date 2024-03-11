@@ -99,7 +99,8 @@ class Post extends Model
     public function relatedPosts($take = 3)
     {
         return $this->whereHas('categories', function ($query) {
-            $query->whereIn('categories.id', $this->categories->pluck('id'))->whereNotIn('posts.id', [$this->id]);
+            $query->whereIn('categories.id', $this->categories->pluck('id'))
+                ->whereNotIn('posts.id', [$this->id]);
         })->with('user')->take($take)->get();
     }
 
@@ -118,8 +119,10 @@ class Post extends Model
                                 ->columnSpanFull(),
 
                             TextInput::make('title')
-                                ->live()->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state)))
+                                ->live()->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug',
+                                    Str::slug($state)))
                                 ->required()
+                                ->unique('posts', 'title', null, 'id')
                                 ->maxLength(255),
 
                             TextInput::make('slug')
@@ -165,6 +168,9 @@ class Post extends Model
 
                             DateTimePicker::make('scheduled_for')
                                 ->visible(function ($get) {
+                                    return $get('status') === PostStatus::SCHEDULED->value;
+                                })
+                                ->required(function ($get) {
                                     return $get('status') === PostStatus::SCHEDULED->value;
                                 })
                                 ->native(false),
